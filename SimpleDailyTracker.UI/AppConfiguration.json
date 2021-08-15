@@ -1,0 +1,11 @@
+{
+  "DirectorySettings": {
+    "ImportDirectory": "D:\\DailyInfo\\Import",
+    "ExportDirectory": "D:\\DailyInfo\\Export\\"
+  },
+  "FileSearch": {
+    "Extension": ".json",
+    "SearchPattern": "day*.json",
+    "DayFinderRegex": "day([\\d]+)\\.json$"
+  } 
+}
