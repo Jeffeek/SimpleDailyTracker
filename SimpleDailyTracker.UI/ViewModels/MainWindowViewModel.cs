@@ -10,6 +10,7 @@ using OxyPlot.Series;
 using Prism.Commands;
 using Prism.Mvvm;
 using SimpleDailyTracker.Application.Enums;
+using SimpleDailyTracker.Application.Interfaces;
 using SimpleDailyTracker.Application.Models;
 using SimpleDailyTracker.Application.Services.Export;
 using SimpleDailyTracker.Application.Services.Import;
@@ -23,7 +24,7 @@ namespace SimpleDailyTracker.UI.ViewModels
         private readonly UserInformationCollector _userInformationCollector;
         private readonly DirectorySettings _directorySettings;
         private readonly FileSearch _fileSearch;
-        private readonly UploadFileManager _uploadFileManager;
+        private readonly IUploadFileManager _uploadFileManager;
         private readonly ExportManager _exportManager;
         private readonly IMapper _mapper;
 
@@ -42,14 +43,14 @@ namespace SimpleDailyTracker.UI.ViewModels
 
         public MainWindowViewModel(UserInformationCollector userInformationCollector,
                                    Configuration configuration,
-                                   UploadFileManager uploadFileManager,
+                                   WindowsUploadFileManager windowsUploadFileManager,
                                    ExportManager exportManager,
                                    IMapper mapper)
         {
             _userInformationCollector = userInformationCollector ?? throw new ArgumentNullException(nameof(userInformationCollector));
             _directorySettings = configuration.DirectorySettings ?? throw new ArgumentNullException(nameof(configuration.DirectorySettings));
             _fileSearch = configuration.FileSearch ?? throw new ArgumentNullException(nameof(configuration.FileSearch));
-            _uploadFileManager = uploadFileManager ?? throw new ArgumentNullException(nameof(uploadFileManager));
+            _uploadFileManager = windowsUploadFileManager ?? throw new ArgumentNullException(nameof(windowsUploadFileManager));
             _exportManager = exportManager ?? throw new ArgumentNullException(nameof(exportManager));
             _mapper = mapper;
         }

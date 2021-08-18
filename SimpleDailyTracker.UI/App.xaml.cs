@@ -9,6 +9,8 @@ using CsvHelper;
 using Prism;
 using Prism.Ioc;
 using Prism.Unity;
+using SimpleDailyTracker.Application.Interfaces;
+using SimpleDailyTracker.Application.Services.Import;
 using SimpleDailyTracker.Application.Settings;
 using SimpleDailyTracker.UI.Models;
 using SimpleDailyTracker.UI.Views;
@@ -38,6 +40,8 @@ namespace SimpleDailyTracker.UI
 
             containerRegistry.Register<FileSearch>(provider => provider.Resolve<Configuration>()
                                                                        .FileSearch);
+
+            containerRegistry.RegisterScoped<IUploadFileManager, WindowsUploadFileManager>();
 
             containerRegistry.RegisterSingleton<IMapper>(() => new MapperConfiguration(x => x.AddProfiles(GetAutoMapperProfilesFromAllAssemblies())).CreateMapper());
 
